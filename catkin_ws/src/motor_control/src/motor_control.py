@@ -95,14 +95,10 @@ def callback(data):
 	obj=DaguWheelsDriver()
 	obj.setWheelsSpeed(data.linear.x,data.linear.y)
 def listener():
-
 	
 	rospy.init_node('motor_control', anonymous=True)	
 	rospy.Subscriber("motor_command", Twist, callback)
-	# m=Twist()
-	# obj=DaguWheelsDriver()
-	# obj.setWheelsSpeed(m.linear.x,m.linear.y)
-
 	rospy.spin()
+
 if __name__ == '__main__':
 	listener()
