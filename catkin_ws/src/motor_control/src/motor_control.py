@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 import rospy
 import time
+import threading
 from geometry_msgs.msg import Twist
+from Adafruit_MotorHAT import Adafruit_MotorHAT
+from math import fabs, floor
 
 class DaguWheelsDriver:
 	LEFT_MOTOR_MIN_PWM = 60        # Minimum speed for left motor  
@@ -96,6 +99,7 @@ def listener():
 	rospy.Subscriber("motor_command", Twist, callback)
 	m=Twist()
 	obj=DaguWheelsDriver()
+    obj.setWheelsSpeed(m.linear.x,m.linear.y)
 
 	rospy.spin()
 if __name__ == '__main__':
