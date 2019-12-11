@@ -65,11 +65,11 @@ def disconnect_camera(p,c):
 
 #########################################################################
 # FUNCTIONS FOR DRIVE RR: BEGIN
-def connect_drive(url):
+def connect_drive(url,username,password):
     #Instruct Robot Raconteur to use NumPy
     RRN.UseNumPy=True
     #Connect to the service
-    c=RRN.ConnectService(url)
+    c=RRN.ConnectService(url,username,{"password":RR.RobotRaconteurVarValue(password,"string")})
     return c
 # FUNCTIONS FOR DRIVE RR: END
 ########################################################################
@@ -515,15 +515,15 @@ def inverse_kinematics(v,omega):
 ########################################################################
 
 def main():
-    url_cam = 'rr+tcp://192.168.43.141:2355?service=Webcam'
-    url_drive = 'rr+tcp://192.168.43.141:2356?service=Drive'
+    url_cam = 'rr+tcp://duckielu:2355?service=Webcam'
+    url_drive = 'rr+tcp://duckielu:2356?service=Drive'
 
     # Connect to camera and start streaming on global current_frame variable
     # p,cam = connect_camera(url_cam)
     cam = connect_camera2(url_cam)
     
     # Connect to motors to drive
-    car = connect_drive(url_drive)
+    car = connect_drive(url_drive,"cats","cats111!")
     
     is_view = False
     if is_view:

@@ -22,7 +22,7 @@ finish_time = 0
 
 def main():
     is_view = True
-    url='rr+tcp://192.168.43.141:2355?service=Webcam'
+    url='rr+tcp://duckielu:2355?service=Webcam'
     if (len(sys.argv)>=2):
         url=sys.argv[1]
 
