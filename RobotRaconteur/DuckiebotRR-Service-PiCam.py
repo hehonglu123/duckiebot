@@ -202,41 +202,28 @@ class WebcamHost_impl(object):
             cam.Shutdown()
 
 def main():
-    RRN.UseNumPy=True
+    with RR.ServerNodeSetup("Webcam_Service",2355) as node_setup:
 
-    #Initialize the webcam host root object
-    # camera_names=[(0,"Left"),(1,"Right")]
-    camera_names=[(0,"Cam1")]
-    obj=WebcamHost_impl(camera_names)
+        #Initialize the webcam host root object
+        # camera_names=[(0,"Left"),(1,"Right")]
+        camera_names=[(0,"Cam1")]
+        obj=WebcamHost_impl(camera_names)
+        
+        # authdata="cats be7af03a538bf30343a501cb1c8237a0 objectlock"
+        # p=RR.PasswordFileUserAuthenticator(authdata)
+        # policies={"requirevaliduser" : "true"}
+        # security=RR.ServiceSecurityPolicy(p,policies)
 
-    #Create Local transport, start server as name, and register it
-    t1=RR.LocalTransport()
-    t1.StartServerAsNodeName("experimental.createwebcam.WebcamHost")
-    RRN.RegisterTransport(t1)
+        RRN.RegisterServiceType(webcam_servicedef)
+        RRN.RegisterService("Webcam","experimental.createwebcam.WebcamHost",obj)
 
-    #Initialize the transport and register the root object
-    t2=RR.TcpTransport()
-    RRN.RegisterTransport(t2)
-    t2.StartServer(2355)
+        #Wait for the user to shutdown the service
+        raw_input("Server started, press enter to quit...")
 
-    #Attempt to load a TLS certificate
-    try:
-        t2.LoadTlsNodeCertificate()
-    except:
-        print "warning: could not load TLS certificate"
+        #Shutdown
+        obj.Shutdown()
 
-    t2.EnableNodeAnnounce()
-
-    RRN.RegisterServiceType(webcam_servicedef)
-    RRN.RegisterService("Webcam","experimental.createwebcam.WebcamHost",obj)
-
-    #Wait for the user to shutdown the service
-    raw_input("Server started, press enter to quit...")
-
-    #Shutdown
-    obj.Shutdown()
-
-    RRN.Shutdown()
+        RRN.Shutdown()
 
 if __name__ == '__main__':
     main()
