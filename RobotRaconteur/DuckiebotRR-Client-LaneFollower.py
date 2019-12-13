@@ -254,13 +254,13 @@ def detect_lines(frame, lines_img = False):
 def ground_projection(lns_white, lns_yellow, lns_red):
     #-------------------PARAMETERS: BEGIN
     # Extrinsic paramaters
-    homography =  np.array([-7.552577e-06, -0.0002441265, -0.2141686, 0.001033941, -2.328867e-05, -0.3232461, -0.000191772, -0.007839249, 1])
+    homography =  np.array([2.978504882627339e-05, -0.0002431183934046065, -0.14782337063015655,0.000827450000089764, 1.6011275010535496e-05, -0.24577634355503136, 2.0105349172797695e-05,-0.006076696427748005, 1.0])
     # Intrinsic parameters
-    camera_matrix = np.array([332.92166660353803, 0.0, 322.3328995392407, 0.0, 327.51948074131144, 208.77795212351865, 0.0, 0.0, 1.0])
+    camera_matrix = np.array([339.11177114718805, 0.0, 309.73999483676715, 0.0, 334.7367885158987, 242.70838998252762, 0.0, 0.0, 1.0])
     # Distortion Coefficients
-    distortion_coefficients = np.array([-0.2602548460819323, 0.045338226035521415, -0.0014496731529041933, 0.0007231160055086537,0.0])
+    distortion_coefficients = np.array([-0.3013401207385431, 0.06130668486509882, 3.365981215199111e-05, -0.004141236598600974,0.0])
     # Projection parameters
-    projection_matrix = np.array([225.0209503173828, 0.0, 321.38889831269444, 0.0, 0.0, 260.9706115722656, 189.29544335933315, 0.0, 0.0, 0.0, 1.0, 0.0])
+    projection_matrix = np.array([230.76260375976562, 0.0, 309.572224442054, 0.0, 0.0, 266.4832763671875, 244.57619333976618, 0.0, 0.0, 0.0, 1.0, 0.0])
     # Rectification parameters
     rectification_matrix = np.array([1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0])
     # Image size
@@ -526,6 +526,7 @@ def main():
     car = connect_drive(url_drive,"cats","cats111!")
     
     is_view = False
+    start=time.time()
     if is_view:
         cv2.namedWindow("Image-with-lines") # Debug
         
@@ -538,7 +539,9 @@ def main():
             #Just loop resetting the frame
             #This is not ideal but good enough for demonstration.  
             current_frame=WebcamImageToMat(cam.CaptureFrame())          
-            if not current_frame is None:          
+
+            if not current_frame is None: 
+                # print(current_frame)         
                 # Use frame from now on to prevent unknown updates on current frame.
                 frame = current_frame
                 
@@ -546,11 +549,11 @@ def main():
                 
                 # Detect Lines and Return detected normed line segments and normals
                 lns_white, nrmls_white, lns_yellow, nrmls_yellow, lns_red, nrmls_red, image = detect_lines(frame, lines_img = is_view)               
-                #print(lns_white, nrmls_white)
+                print(lns_white, lns_yellow)
                 
                 # If there is no line detected, stop the car.
                 if not len(lns_white)>0 and not len(lns_yellow)>0:
-                    # car.setWheelsSpeed(0,0)
+                    car.setWheelsSpeed(0,0)
                     prev_time = time.time()
                     continue
                 # Convert image points to Ground Frame Coordinate points (+x:ahead, +y:left)
@@ -572,7 +575,7 @@ def main():
                 
                 # Calculate w(omega) and v from d and phi
                 v,w = lane_controller(d,phi)
-                #print(v,w)
+                # print(v,w)
                 
                 # Calculate inverse kinematics to find each wheel speed
                 vel_right,vel_left = inverse_kinematics(v,w)
@@ -591,10 +594,12 @@ def main():
                 # print("Rate: "+str(duration_rate))
                 
                 # View for Debug
+                now=time.time()
                 if is_view:
+                    print("here")
                     image = cv2.resize(image, (640, 320))
                     cv2.imshow("Image-with-lines",image)
-                    if cv2.waitKey(1)!=-1:
+                    if cv2.waitKey(1)!=-1 and now-start>100:
                         break
     except KeyboardInterrupt:
         print('Interrupted!')

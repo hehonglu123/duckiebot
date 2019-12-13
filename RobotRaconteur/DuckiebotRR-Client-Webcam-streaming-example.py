@@ -44,17 +44,18 @@ def main():
 
     if (is_view):
         cv2.namedWindow("Image")
-
+    start=time.time()
     while True:
         #Just loop resetting the frame
         #This is not ideal but good enough for demonstration
-
+        now=time.time()
+        print(current_frame)
         if (not current_frame is None):
             if (is_view):
                 cv2.imshow("Image",current_frame)
             else:            
                 a = 1
-        if cv2.waitKey(50)!=-1:
+        if cv2.waitKey(50)!=-1 and now-start>10:
             break
     cv2.destroyAllWindows()
 
