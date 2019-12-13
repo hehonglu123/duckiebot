@@ -81,7 +81,7 @@ class Webcam_impl(object):
             image.height=self.stream.array.shape[0]
             image.step=self.stream.array.shape[1]*3
             image.data=self.stream.array.reshape(self.stream.array.size, order='C')
-            #print(self.stream.array)
+            #print(image.width,image.height)
             # Clear stream
             self.stream.truncate(0)
             return image
@@ -140,8 +140,10 @@ class Webcam_impl(object):
             #Capture a frame
             try:
                 frame=self.CaptureFrame()
+                #print(frame.data)
             except:
                 #TODO: notify the client that streaming has failed
+                print("failed")
                 self._streaming=False
                 return
             #Lock the pipe endpoints dictionary
