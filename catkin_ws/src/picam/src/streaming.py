@@ -12,11 +12,11 @@ class streaming:
 
 	def callback(self,data):
 		try:
-			cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
+			self.cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
 		except CvBridgeError as e:
 			print(e)
 
-		cv2.imshow("Image window", cv_image)
+		cv2.imshow("Image window", self.cv_image)
 		cv2.waitKey(3)
 	 
 def main(args):
