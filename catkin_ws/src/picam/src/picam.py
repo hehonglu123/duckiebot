@@ -19,22 +19,17 @@ class Webcam_impl():
         self.stream.truncate(0)
         return image
 
-def loop(pub,img,picam,bridge):
-	frame=picam.CaptureFrame()
-        pub.publish(bridge.cv2_to_imgmsg(frame,"bgr8"))
-
-
 
 if __name__ == '__main__':
 	picam=Webcam_impl()
 	pub = rospy.Publisher('picam', Image, queue_size=0)
 	rospy.init_node('picam', anonymous=True)
-	# rate = rospy.Rate(10)
+    bridge=CvBridge()
 	img=Image()
 	(img.width,img.height)=picam.camera.resolution
     while True:
         try:
-        
-            loop(pub,img,picam,CvBridge())
+            frame=picam.CaptureFrame()
+            pub.publish(bridge.cv2_to_imgmsg(frame,"bgr8"))
         except KeyboardInterrupt:
             print("Shutting down")

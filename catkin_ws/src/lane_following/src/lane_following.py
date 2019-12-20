@@ -468,6 +468,7 @@ def main():
     rospy.init_node('lane_following', anonymous=True)
     pub = rospy.Publisher('motor_command', Twist, queue_size=0)
     sub = rospy.Subscriber("picam",Image,callback)
+    # rate = rospy.Rate(10)
     velocity = Twist()
     # try:
     #     rospy.spin()
@@ -480,14 +481,14 @@ def main():
     if is_view:
         cv2.namedWindow("Image-with-lines") # Debug
         
-    try:
-        prev_time = time.time()
-        iteration_times = []
-        predict_times = []
+    prev_time = time.time()
+    iteration_times = []
+    predict_times = []
         
-        while True:
-            #Just loop resetting the frame
-            #This is not ideal but good enough for demonstration.  
+    while True:
+        #Just loop resetting the frame
+        #This is not ideal but good enough for demonstration.  
+        try:
 
             if not cv_image is None: 
                 # print(current_frame)         
@@ -502,7 +503,9 @@ def main():
                 
                 # If there is no line detected, stop the car.
                 if not len(lns_white)>0 and not len(lns_yellow)>0:
-                    car.setWheelsSpeed(0,0)
+                    velocity.linear.y,velocity.linear.x = (0,0)
+                    pub.publish(velocity)
+                    rate.sleep()
                     prev_time = time.time()
                     continue
                 # Convert image points to Ground Frame Coordinate points (+x:ahead, +y:left)
@@ -532,7 +535,7 @@ def main():
                 
                 # Drive the car
                 pub.publish(velocity)
-                rate.sleep()            
+                # rate.sleep()            
                 # car.setWheelsSpeed(0,0)
                 
                 # Calculate passed time rate
@@ -551,8 +554,8 @@ def main():
                     cv2.imshow("Image-with-lines",image)
                     if cv2.waitKey(1)!=-1 and now-start>100:
                         break
-    except KeyboardInterrupt:
-        print('Interrupted!')
+        except KeyboardInterrupt:
+            print('Interrupted!')
         
     # Convert fps values to numpy array
     iteration_times = np.array(iteration_times)
