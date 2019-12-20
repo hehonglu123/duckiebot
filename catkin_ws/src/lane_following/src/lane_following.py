@@ -12,17 +12,6 @@ import math
 from math import floor, atan2, pi, cos, sin, sqrt
 from cv_bridge import CvBridge, CvBridgeError
 
-class streaming:
-    def __init__(self):
-        self.bridge = CvBridge()
-        self.image_sub = rospy.Subscriber("picam",Image,self.callback)
-
-    def callback(self,data):
-        try:
-            self.cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
-        except CvBridgeError as e:
-            print(e)
-
 
 #########################################################################
 # FUNCTIONS FOR LINE DETECTION: BEGIN
@@ -463,12 +452,22 @@ def inverse_kinematics(v,omega):
     return vel_right,vel_left
 # FUNCTIONS FOR INVERSE KINEMATICS: END
 ########################################################################
+cv_image=None
+bridge=CvBridge()
+def callback(data):
+    global cv_image, bridge
+    try:
+        cv_image=bridge.imgmsg_to_cv2(data, "bgr8")
+    except CvBridgeError as e:
+        print(e)
+
 
 def main():
+    global cv_image, bridge
 
-    picam_stream=streaming()
     rospy.init_node('lane_following', anonymous=True)
     pub = rospy.Publisher('motor_command', Twist, queue_size=0)
+    sub = rospy.Subscriber("picam",Image,callback)
     velocity = Twist()
     # try:
     #     rospy.spin()
@@ -490,10 +489,10 @@ def main():
             #Just loop resetting the frame
             #This is not ideal but good enough for demonstration.  
 
-            if not picam_stream.cv_image is None: 
+            if not cv_image is None: 
                 # print(current_frame)         
                 # Use frame from now on to prevent unknown updates on current frame.
-                frame = picam_stream.cv_image
+                frame = cv_image
                 
                 # print("Get-image: "+str(time.time() - prev_time))
                 

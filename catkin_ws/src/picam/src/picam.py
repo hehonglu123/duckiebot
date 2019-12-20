@@ -32,8 +32,9 @@ if __name__ == '__main__':
 	# rate = rospy.Rate(10)
 	img=Image()
 	(img.width,img.height)=picam.camera.resolution
+    while True:
         try:
-            while True:
-                loop(pub,img,picam,CvBridge())
+        
+            loop(pub,img,picam,CvBridge())
         except KeyboardInterrupt:
             print("Shutting down")
