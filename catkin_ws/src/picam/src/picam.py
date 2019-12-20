@@ -24,12 +24,12 @@ if __name__ == '__main__':
 	picam=Webcam_impl()
 	pub = rospy.Publisher('picam', Image, queue_size=0)
 	rospy.init_node('picam', anonymous=True)
-    bridge=CvBridge()
+        bridge=CvBridge()
 	img=Image()
 	(img.width,img.height)=picam.camera.resolution
-    while True:
-        try:
-            frame=picam.CaptureFrame()
-            pub.publish(bridge.cv2_to_imgmsg(frame,"bgr8"))
-        except KeyboardInterrupt:
-            print("Shutting down")
+        while True:
+            try:
+                frame=picam.CaptureFrame()
+                pub.publish(bridge.cv2_to_imgmsg(frame,"bgr8"))
+            except KeyboardInterrupt:
+                print("Shutting down")

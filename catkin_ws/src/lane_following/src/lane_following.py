@@ -492,7 +492,7 @@ def main():
         try:
 
             if not cv_image is None: 
-                print("here")
+
 
                 # print(current_frame)         
                 # Use frame from now on to prevent unknown updates on current frame.
