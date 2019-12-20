@@ -1,0 +1,8 @@
+prefix=/home/duckielu/duckiebot/catkin_ws/devel
+
+Name: picam
+Description: Description of picam
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/duckielu/duckiebot/catkin_ws/devel/lib 
+Requires: 

@@ -1,8 +1,8 @@
-# Install script for directory: /home/duckiehe/catkin_ws/src/motor_control
+# Install script for directory: /home/duckielu/duckiebot/catkin_ws/src/motor_control
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/duckiehe/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/duckielu/duckiebot/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/duckiehe/catkin_ws/build/motor_control/catkin_generated/installspace/motor_control.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/duckielu/duckiebot/catkin_ws/build/motor_control/catkin_generated/installspace/motor_control.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/motor_control/cmake" TYPE FILE FILES
-    "/home/duckiehe/catkin_ws/build/motor_control/catkin_generated/installspace/motor_controlConfig.cmake"
-    "/home/duckiehe/catkin_ws/build/motor_control/catkin_generated/installspace/motor_controlConfig-version.cmake"
+    "/home/duckielu/duckiebot/catkin_ws/build/motor_control/catkin_generated/installspace/motor_controlConfig.cmake"
+    "/home/duckielu/duckiebot/catkin_ws/build/motor_control/catkin_generated/installspace/motor_controlConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/motor_control" TYPE FILE FILES "/home/duckiehe/catkin_ws/src/motor_control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/motor_control" TYPE FILE FILES "/home/duckielu/duckiebot/catkin_ws/src/motor_control/package.xml")
 endif()
 

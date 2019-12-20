@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/duckiehe/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/duckielu/duckiebot/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/duckiehe/catkin_ws/build
+CMAKE_BINARY_DIR = /home/duckielu/duckiebot/catkin_ws/build
 
 # Utility rule file for std_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/build: std_msgs_gener
 .PHONY : motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/build
 
 motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	cd /home/duckiehe/catkin_ws/build/motor_control && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/duckielu/duckiebot/catkin_ws/build/motor_control && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/depend:
-	cd /home/duckiehe/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/duckiehe/catkin_ws/src /home/duckiehe/catkin_ws/src/motor_control /home/duckiehe/catkin_ws/build /home/duckiehe/catkin_ws/build/motor_control /home/duckiehe/catkin_ws/build/motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/duckielu/duckiebot/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/duckielu/duckiebot/catkin_ws/src /home/duckielu/duckiebot/catkin_ws/src/motor_control /home/duckielu/duckiebot/catkin_ws/build /home/duckielu/duckiebot/catkin_ws/build/motor_control /home/duckielu/duckiebot/catkin_ws/build/motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : motor_control/CMakeFiles/std_msgs_generate_messages_py.dir/depend
 
