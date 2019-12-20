@@ -468,7 +468,7 @@ def main():
     rospy.init_node('lane_following', anonymous=True)
     pub = rospy.Publisher('motor_command', Twist, queue_size=0)
     sub = rospy.Subscriber("picam",Image,callback)
-    # rate = rospy.Rate(10)
+    rate = rospy.Rate(10)
     velocity = Twist()
     # try:
     #     rospy.spin()
@@ -486,11 +486,14 @@ def main():
     predict_times = []
         
     while True:
+
         #Just loop resetting the frame
         #This is not ideal but good enough for demonstration.  
         try:
 
             if not cv_image is None: 
+                print("here")
+
                 # print(current_frame)         
                 # Use frame from now on to prevent unknown updates on current frame.
                 frame = cv_image
@@ -499,13 +502,13 @@ def main():
                 
                 # Detect Lines and Return detected normed line segments and normals
                 lns_white, nrmls_white, lns_yellow, nrmls_yellow, lns_red, nrmls_red, image = detect_lines(frame, lines_img = is_view)               
-                print(lns_white, lns_yellow)
+                # print(lns_white, lns_yellow)
                 
                 # If there is no line detected, stop the car.
                 if not len(lns_white)>0 and not len(lns_yellow)>0:
                     velocity.linear.y,velocity.linear.x = (0,0)
                     pub.publish(velocity)
-                    rate.sleep()
+                    # rate.sleep()
                     prev_time = time.time()
                     continue
                 # Convert image points to Ground Frame Coordinate points (+x:ahead, +y:left)
