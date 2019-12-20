@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/duckielu/duckiebot/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/iamnotedible/duckiebot/catkin_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/duckielu/duckiebot/catkin_ws/build
+CMAKE_BINARY_DIR = /home/iamnotedible/duckiebot/catkin_ws/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -63,10 +63,10 @@ picam/CMakeFiles/_catkin_empty_exported_target.dir/build: _catkin_empty_exported
 .PHONY : picam/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 picam/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/duckielu/duckiebot/catkin_ws/build/picam && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/iamnotedible/duckiebot/catkin_ws/build/picam && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : picam/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 picam/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/duckielu/duckiebot/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/duckielu/duckiebot/catkin_ws/src /home/duckielu/duckiebot/catkin_ws/src/picam /home/duckielu/duckiebot/catkin_ws/build /home/duckielu/duckiebot/catkin_ws/build/picam /home/duckielu/duckiebot/catkin_ws/build/picam/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/iamnotedible/duckiebot/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/iamnotedible/duckiebot/catkin_ws/src /home/iamnotedible/duckiebot/catkin_ws/src/picam /home/iamnotedible/duckiebot/catkin_ws/build /home/iamnotedible/duckiebot/catkin_ws/build/picam /home/iamnotedible/duckiebot/catkin_ws/build/picam/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : picam/CMakeFiles/_catkin_empty_exported_target.dir/depend
 

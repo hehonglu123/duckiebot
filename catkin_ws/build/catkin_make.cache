@@ -1,2 +1,2 @@
 motor_control:picam
--DCATKIN_DEVEL_PREFIX=/home/duckielu/duckiebot/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/duckielu/duckiebot/catkin_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/iamnotedible/duckiebot/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/iamnotedible/duckiebot/catkin_ws/install -G Unix Makefiles

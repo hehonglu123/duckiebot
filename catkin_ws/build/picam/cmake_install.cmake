@@ -1,8 +1,8 @@
-# Install script for directory: /home/duckielu/duckiebot/catkin_ws/src/picam
+# Install script for directory: /home/iamnotedible/duckiebot/catkin_ws/src/picam
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/duckielu/duckiebot/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/iamnotedible/duckiebot/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/duckielu/duckiebot/catkin_ws/build/picam/catkin_generated/installspace/picam.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/iamnotedible/duckiebot/catkin_ws/build/picam/catkin_generated/installspace/picam.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/picam/cmake" TYPE FILE FILES
-    "/home/duckielu/duckiebot/catkin_ws/build/picam/catkin_generated/installspace/picamConfig.cmake"
-    "/home/duckielu/duckiebot/catkin_ws/build/picam/catkin_generated/installspace/picamConfig-version.cmake"
+    "/home/iamnotedible/duckiebot/catkin_ws/build/picam/catkin_generated/installspace/picamConfig.cmake"
+    "/home/iamnotedible/duckiebot/catkin_ws/build/picam/catkin_generated/installspace/picamConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/picam" TYPE FILE FILES "/home/duckielu/duckiebot/catkin_ws/src/picam/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/picam" TYPE FILE FILES "/home/iamnotedible/duckiebot/catkin_ws/src/picam/package.xml")
 endif()
 
