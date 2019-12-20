@@ -22,7 +22,6 @@ import pygame
 import time
 import os, sys
 import re
-from RobotRaconteur.Client import *
 
 
 
