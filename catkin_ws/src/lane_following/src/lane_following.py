@@ -467,7 +467,7 @@ def main():
 
     rospy.init_node('lane_following', anonymous=True)
     pub = rospy.Publisher('motor_command', Twist, queue_size=0)
-    sub = rospy.Subscriber("picam",Image,callback)
+    sub = rospy.Subscriber("raspicam_node/image",Image,callback)
     rate = rospy.Rate(10)
     velocity = Twist()
     # try:
